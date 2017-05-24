@@ -2,7 +2,7 @@ class Station
   attr_accessor :trains
   attr_reader   :title
 
-  def initialize(title)
+  def initialize(title:)
     @title  = title
     @trains = []
     puts "Station created: #{self}, title: #{self.title}."
