@@ -1,3 +1,3 @@
 class Vagon
-  attr_accessor :type
+  attr_reader :type
 end

@@ -8,3 +8,5 @@ require_relative 'passenger_vagon'
 require_relative 'cargo_vagon'
 require_relative 'controller'
 # require_relative 'test'
+
+controller = Controller.new.run

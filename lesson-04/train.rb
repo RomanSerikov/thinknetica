@@ -1,6 +1,6 @@
 class Train
-  attr_accessor :vagons, :speed, :current_station_index, :route
-  attr_reader :number, :type
+  attr_accessor :speed, :route
+  attr_reader :number, :type, :vagons
 
   def initialize(number:)
     @number = number
@@ -87,10 +87,16 @@ class Train
   def current_station
     self.route.stations[current_station_index]
   end
+
+  def passenger?
+    self.type == :pass
+  end
+
+  def cargo?
+    self.type == :cargo
+  end
+
+  protected
+
+  attr_accessor :current_station_index
 end
-
-
-
-
-
-
