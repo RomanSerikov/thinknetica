@@ -9,7 +9,9 @@ class Train
   @@trains = []
 
   def self.find(number:)
-    @@trains.select { |train| train.number == number }.first
+    # @@trains.detect { |train| train.number == number } # Если номер поезда уникален
+    result = @@trains.select { |train| train.number == number }
+    result.empty? ? nil : result
   end
 
   def initialize(number:)

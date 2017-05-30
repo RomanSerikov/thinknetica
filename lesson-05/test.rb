@@ -24,7 +24,7 @@ puts "========================="
 
 train1 = PassengerTrain.new(number: 777)
 train2 = PassengerTrain.new(number: 123)
-train3 = CargoTrain.new(number: 888)
+train3 = CargoTrain.new(number: 777)
 
 puts "========================="
 
