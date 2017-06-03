@@ -47,9 +47,9 @@ class Controller
       puts "Ошибка. Неверный тип поезда."
     end
 
-    rescue
-      puts 'Wrong number format. Try again.'
-      retry
+  rescue
+    puts 'Wrong number format. Try again.'
+    retry
   end
 
   def create_route 

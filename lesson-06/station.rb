@@ -1,7 +1,9 @@
 require_relative 'instance_counter'
+require_relative 'valid'
 
 class Station
   include InstanceCounter
+  include Valid
   attr_accessor :trains
   attr_reader   :title
   @@stations = []
@@ -16,12 +18,6 @@ class Station
     @trains = []
     @@stations << self
     register_instance
-  end
-
-  def valid?
-    validate!
-  rescue
-    false
   end
 
   def take_train(train)
@@ -50,6 +46,5 @@ class Station
 
   def validate!
     raise "Title should not be empty" if title.nil?  
-    true
   end
 end

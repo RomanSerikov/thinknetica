@@ -1,9 +1,11 @@
 require_relative 'company_name'
 require_relative 'instance_counter'
+require_relative 'valid'
 
 class Train
   include CompanyName
   include InstanceCounter
+  include Valid
 
   NUMBER_FORMAT = /^[0-9а-я]{3}-?[0-9а-я]{2}$/i
 
@@ -27,12 +29,6 @@ class Train
     @current_station_index = nil
     @@trains << self
     register_instance
-  end
-
-  def valid?
-    validate!
-  rescue
-    false
   end
 
   def speed_up
@@ -118,6 +114,5 @@ class Train
 
   def validate!
     raise "Number has invalid format" if number !~ NUMBER_FORMAT
-    true
   end
 end

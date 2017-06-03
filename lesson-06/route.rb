@@ -1,15 +1,12 @@
+require_relative 'valid'
+
 class Route
+  include Valid
   attr_accessor :stations
 
   def initialize(start:, finish:)
     @stations = [start, finish]
     validate!
-  end
-
-  def valid?
-    validate!
-  rescue
-    false
   end
 
   def add_station(station)
@@ -32,8 +29,7 @@ class Route
   def validate!
     raise "Error" if stations.first.nil?
     raise "Error" if stations.last.nil?
-    raise "Error" unless stations.first.class == Station
-    raise "Error" unless stations.last.class == Station
-    true
+    raise "Error" unless stations.first.instance_of?(Station)
+    raise "Error" unless stations.last.instance_of?(Station)
   end
 end
