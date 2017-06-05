@@ -31,10 +31,8 @@ class Train
     register_instance
   end
 
-  def block_method(&block)
-    vagons.each do |vagon|
-      yield(vagon)
-    end
+  def each_vagon(&block)
+    vagons.each(&block)
   end
 
   def speed_up

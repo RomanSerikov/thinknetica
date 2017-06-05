@@ -20,10 +20,8 @@ class Station
     register_instance
   end
 
-  def block_method(&block)
-    self.trains.each do |train|
-      yield(train)
-    end
+  def each(&block)
+    @trains.each(&block)
   end
 
   def take_train(train)

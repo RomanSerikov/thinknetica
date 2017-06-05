@@ -220,14 +220,14 @@ class Controller
 
   def show_stations
     puts "Станции:"
-    self.stations.each_with_index do |station, id| 
+    self.stations.each.with_index do |station, id| 
       puts "#{id}: #{station} | title: #{station.title}"
     end
   end
 
   def show_trains_on_station
     puts "Выберите станцию, на которой хотите посмотреть поезда:"
-    self.stations.each_with_index do |station, id| 
+    self.stations.each.with_index do |station, id| 
       puts "#{id}: #{station} | title: #{station.title}"
     end
     self.stations[gets.chomp.to_i].show_all_trains
@@ -240,7 +240,7 @@ class Controller
     end
     train = self.trains[gets.chomp.to_i]
 
-    train.vagons.each_with_index do |vagon, id|
+    train.each_vagon.with_index do |vagon, id|
       if train.passenger? 
         print "#{id} | type: #{vagon.type} | free seats: #{vagon.free_seats} | "
         puts  "occupied: #{vagon.occupied_seats}"
@@ -263,13 +263,13 @@ class Controller
     return puts "Ошибка. У этого поезда нет вагонов." if train.vagons.empty?
 
     puts "Выберите вагон:"
-    train.vagons.each_with_index do |vagon, id| 
+    train.each_vagon.with_index do |vagon, id| 
       puts "#{id}: #{vagon}"
     end
     vagon = train.vagons[gets.chomp.to_i]
 
     if train.passenger?
-      puts vagon.occupy_seat! ? "Success! Passenger added." : "Error! All seats occupied!" 
+      puts vagon.occupy_seat ? "Success! Passenger added." : "Error! All seats occupied!" 
     elsif train.cargo?
       puts "Укажите объем груза:"
       puts vagon.add_freight(gets.chomp.to_i) ? "Success. Freight addded." : "Error. Not enough space."

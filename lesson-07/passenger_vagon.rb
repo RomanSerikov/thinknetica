@@ -7,7 +7,7 @@ class PassengerVagon < Vagon
     @passengers = 0
   end
 
-  def occupy_seat!
+  def occupy_seat
     @passengers += 1 unless self.free_seats.zero?
   end
 
