@@ -1,0 +1,20 @@
+AllCops:
+  DisplayCopNames: true
+  StyleGuideCopsOnly: true
+  Exclude:
+    - '**/test.rb'
+
+Rails:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/EndOfLine:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 15
