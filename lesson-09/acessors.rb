@@ -5,8 +5,6 @@ module Acessors
 
   module ClassMethods
     def attr_accessor_with_history(*args)
-      @@var_values = Hash.new { |h, k| h[k] = [] }
-
       args.each do |arg|
         var_name = "@#{arg}".to_sym
 
@@ -14,10 +12,11 @@ module Acessors
 
         define_method("#{arg}=".to_sym) do |value|
           instance_variable_set(var_name, value)
-          @@var_values[arg] << value
+          @var_values ||= Hash.new { |h, k| h[k] = [] }
+          @var_values[arg] << value
         end
 
-        define_method("#{arg}_history") { @@var_values[arg] }
+        define_method("#{arg}_history") { @var_values[arg] }
       end
     end
 
